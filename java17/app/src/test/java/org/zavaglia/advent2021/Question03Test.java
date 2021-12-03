@@ -1,0 +1,18 @@
+package org.zavaglia.advent2021;
+
+import junit.framework.TestCase;
+
+import java.io.IOException;
+
+public class Question03Test extends TestCase {
+
+    public void testA() throws IOException {
+        var q = new Question03();
+        assertEquals(q.ExpectedA(), q.A());
+    }
+
+    public void testB() throws IOException {
+        var q = new Question03();
+        assertEquals(q.ExpectedB(), q.B());
+    }
+}
