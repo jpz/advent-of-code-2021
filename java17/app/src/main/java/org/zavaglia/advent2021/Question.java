@@ -30,15 +30,15 @@ public abstract class Question {
         return GetLines().stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    // calculate the result of the part A question
-    public abstract long A() throws IOException;
+    // calculate the result of the part 1
+    public abstract long Part1() throws IOException;
 
-    // the expected result of the part A question
-    public abstract long ExpectedA();
+    // the expected result of the part 1
+    public abstract long Part1Expected();
 
-    // calculate the result of the part B question
-    public abstract long B() throws IOException;
+    // calculate the result of the part 2
+    public abstract long Part2() throws IOException;
 
-    // the expected result of the part B question
-    public abstract long ExpectedB();
+    // the expected result of the part 2
+    public abstract long Part2Expected();
 }

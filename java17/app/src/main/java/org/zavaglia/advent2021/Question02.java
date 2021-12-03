@@ -17,7 +17,7 @@ public class Question02 extends Question {
                 .collect(Collectors.toList());
     }
 
-    public long A() throws IOException {
+    public long Part1() throws IOException {
         long depth = 0;
         long lateral = 0;
 
@@ -31,11 +31,11 @@ public class Question02 extends Question {
         return depth * lateral;
     }
 
-    public long ExpectedA() {
+    public long Part1Expected() {
         return 1882980;
     }
 
-    public long B() throws IOException {
+    public long Part2() throws IOException {
         long depth = 0;
         long lateral = 0;
         long aim = 0;
@@ -53,7 +53,7 @@ public class Question02 extends Question {
         return depth * lateral;
     }
 
-    public long ExpectedB() {
+    public long Part2Expected() {
         return 1971232560;
     }
 

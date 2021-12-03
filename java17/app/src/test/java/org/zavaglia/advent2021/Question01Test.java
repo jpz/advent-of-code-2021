@@ -8,11 +8,11 @@ public class Question01Test extends TestCase {
 
     public void testA() throws IOException {
         var q = new Question01();
-        assertEquals(q.A(), q.ExpectedA());
+        assertEquals(q.Part1(), q.Part1Expected());
     }
 
     public void testB() throws IOException {
         var q = new Question01();
-        assertEquals(q.B(), q.ExpectedB());
+        assertEquals(q.Part2(), q.Part2Expected());
     }
 }

@@ -17,16 +17,16 @@ public class Question01 extends Question {
                 .reduce(0, Integer::sum);
     }
 
-    public long A() throws IOException {
+    public long Part1() throws IOException {
         var ints = GetIntegers();
         return CountLargerSuccessors(ints);
     }
 
-    public long ExpectedA() {
+    public long Part1Expected() {
         return 1393L;
     }
 
-    public long B() throws IOException {
+    public long Part2() throws IOException {
         var ints = GetIntegers();
         // compute the aggregates x[a] + x[a+1] + x[a+2]
         var aggregates = IntStream.range(0, ints.size() - 2)
@@ -35,7 +35,7 @@ public class Question01 extends Question {
         return CountLargerSuccessors(aggregates);
     }
 
-    public long ExpectedB() {
+    public long Part2Expected() {
         return 1359L;
     }
 

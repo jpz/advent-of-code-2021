@@ -17,7 +17,7 @@ public class Question03 extends Question {
                 .collect(Collectors.toList());
     }
 
-    public long A() throws IOException {
+    public long Part1() throws IOException {
         final var numbers = GetLines();
         final var bitcounts = getBitCounts(numbers);
         final var bits = numbers.get(0).length();
@@ -56,11 +56,11 @@ public class Question03 extends Question {
         return bitcount;
     }
 
-    public long ExpectedA() {
+    public long Part1Expected() {
         return 3969000;
     }
 
-    public long B() throws IOException {
+    public long Part2() throws IOException {
         final var numbers = GetLines();
         final var bits = numbers.get(0).length();
 
@@ -101,7 +101,7 @@ public class Question03 extends Question {
         return o2GeneratorRating * co2ScrubberRating;
     }
 
-    public long ExpectedB() {
+    public long Part2Expected() {
         return 4267809;
     }
 
