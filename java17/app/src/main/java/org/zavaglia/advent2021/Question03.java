@@ -2,19 +2,11 @@ package org.zavaglia.advent2021;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Question03 extends Question {
 
     public Question03() {
         super(3);
-    }
-
-    List<Command> GetCommands() throws IOException {
-        return GetInputText().stream()
-                .map(line -> line.split(" "))
-                .map(arr -> new Command(arr[0], Integer.parseInt(arr[1])))
-                .collect(Collectors.toList());
     }
 
     public long Part1() throws IOException {
@@ -103,8 +95,5 @@ public class Question03 extends Question {
 
     public long Part2Expected() {
         return 4267809;
-    }
-
-    record Command(String direction, int magnitude) {
     }
 }
