@@ -11,7 +11,7 @@ public class Question02 extends Question {
     }
 
     List<Command> GetCommands() throws IOException {
-        return GetLines().stream()
+        return GetInputText().stream()
                 .map(line -> line.split(" "))
                 .map(arr -> new Command(arr[0], Integer.parseInt(arr[1])))
                 .collect(Collectors.toList());

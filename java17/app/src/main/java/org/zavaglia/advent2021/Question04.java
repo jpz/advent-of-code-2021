@@ -1,7 +1,10 @@
 package org.zavaglia.advent2021;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -11,9 +14,73 @@ public class Question04 extends Question {
         super(4);
     }
 
+    List<Integer> GetNumberDraw() throws IOException {
+        return Arrays.stream(GetInputText().get(0).split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    List<Board> GetBoards() throws IOException {
+        var lines = GetInputText();
+
+        var result = new ArrayList<Board>();
+        for (var baseIndex = 2; baseIndex < lines.size(); baseIndex += 6) {
+            var values = new int[5][5];
+            for (var row = 0; row < 5; row++) {
+                var numbers = Arrays.stream(lines.get(baseIndex + row).trim().split(" +"))
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList());
+                for (var column = 0; column < 5; column++) {
+                    values[row][column] = numbers.get(column);
+                }
+            }
+            result.add(new Board(values));
+        }
+        return result;
+    }
+
+    public long Part1() throws IOException {
+        final var boards = GetBoards();
+
+        for (var number : GetNumberDraw()) {
+            for (var board : boards) {
+                board.mark(number);
+                if (board.hasSolution()) {
+                    return board.score() * number;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public long Part1Expected() {
+        return 58374;
+    }
+
+    public long Part2() throws IOException {
+        final var boards = GetBoards();
+        final var unsolvedBoards = new HashSet<>(boards);
+
+        for (var number : GetNumberDraw()) {
+            for (var board : boards) {
+                if (board.mark(number) && board.hasSolution()) {
+                    unsolvedBoards.remove(board);
+                    if (unsolvedBoards.size() == 0) {
+                        return board.score() * number;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    public long Part2Expected() {
+        return 11377;
+    }
+
     record Board(int[][] value, boolean[][] marked) {
 
-        public Board(int[][] value)  {
+        public Board(int[][] value) {
             this(value, new boolean[5][5]);
         }
 
@@ -29,6 +96,7 @@ public class Question04 extends Question {
             }
             return hasMarked;
         }
+
         public boolean hasSolution() {
             for (var i = 0; i < 5; i++) {
                 var solvedAcross = true;
@@ -56,69 +124,5 @@ public class Question04 extends Question {
             return sum;
         }
 
-    }
-
-    List<Integer> GetNumberDraw() throws IOException {
-        return Arrays.stream(GetLines().get(0).split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
-
-    List<Board> GetBoards() throws IOException {
-        var lines = GetLines();
-
-        var result = new ArrayList<Board>();
-        for (var baseIndex = 2; baseIndex < lines.size(); baseIndex += 6) {
-            var values = new int[5][5];
-            for (var row = 0; row < 5; row++) {
-                var numbers = Arrays.stream(lines.get(baseIndex + row).trim().split(" +"))
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toList());
-                for (var column = 0; column < 5; column++) {
-                    values[row][column] = numbers.get(column);
-                }
-            }
-            result.add(new Board(values));
-        }
-        return result;
-    }
-
-    public long Part1() throws IOException {
-        final var boards = GetBoards();
-
-        for (var number: GetNumberDraw()) {
-            for (var board: boards) {
-                board.mark(number);
-                if (board.hasSolution()) {
-                    return board.score() * number;
-                }
-            }
-        }
-        return -1;
-    }
-
-    public long Part1Expected() {
-        return 58374;
-    }
-
-    public long Part2() throws IOException {
-        final var boards = GetBoards();
-        final var unsolvedBoards = new HashSet<>(boards);
-
-        for (var number: GetNumberDraw()) {
-            for (var board: boards) {
-                if (board.mark(number) && board.hasSolution()) {
-                    unsolvedBoards.remove(board);
-                    if (unsolvedBoards.size() == 0) {
-                        return board.score() * number;
-                    }
-                }
-            }
-        }
-        return -1;
-    }
-
-    public long Part2Expected() {
-        return 11377;
     }
 }

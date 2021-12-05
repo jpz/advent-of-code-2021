@@ -11,14 +11,14 @@ public class Question03 extends Question {
     }
 
     List<Command> GetCommands() throws IOException {
-        return GetLines().stream()
+        return GetInputText().stream()
                 .map(line -> line.split(" "))
                 .map(arr -> new Command(arr[0], Integer.parseInt(arr[1])))
                 .collect(Collectors.toList());
     }
 
     public long Part1() throws IOException {
-        final var numbers = GetLines();
+        final var numbers = GetInputText();
         final var bitcounts = getBitCounts(numbers);
         final var bits = numbers.get(0).length();
 
@@ -61,7 +61,7 @@ public class Question03 extends Question {
     }
 
     public long Part2() throws IOException {
-        final var numbers = GetLines();
+        final var numbers = GetInputText();
         final var bits = numbers.get(0).length();
 
         final var o2GeneratorCandidates = new HashSet<>(numbers);

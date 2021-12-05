@@ -9,9 +9,15 @@ import java.util.stream.Collectors;
 
 public abstract class Question {
     private final int questionNumber_;
+    private final List<String> input_;
 
     public Question(int questionNumber) {
+        this(questionNumber, null);
+    }
+
+    public Question(int questionNumber, List<String> input) {
         this.questionNumber_ = questionNumber;
+        this.input_ = input;
     }
 
     public int GetQuestionNumber() {
@@ -19,15 +25,18 @@ public abstract class Question {
     }
 
     // get the List<String> of for the lines of question input
-    public List<String> GetLines() throws IOException {
-        return Files.readAllLines(
-                Paths.get(String.format("data/q%02d.txt", questionNumber_)),
-                Charset.defaultCharset());
+    public List<String> GetInputText() throws IOException {
+        if (this.input_ != null)
+            return this.input_;
+        else
+            return Files.readAllLines(
+                    Paths.get(String.format("data/q%02d.txt", questionNumber_)),
+                    Charset.defaultCharset());
     }
 
     // get the List<Integer> for the lines of question input
     public List<Integer> GetIntegers() throws IOException {
-        return GetLines().stream().map(Integer::parseInt).collect(Collectors.toList());
+        return GetInputText().stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     // calculate the result of the part 1
