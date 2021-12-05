@@ -1,16 +1,15 @@
 package org.zavaglia.advent2021;
 
-import java.io.IOException;
 import java.util.*;
 
 public class Question03 extends Question {
 
     public Question03() {
-        super(3);
+        super();
     }
 
-    public long Part1() throws IOException {
-        final var numbers = GetInputText();
+    public long part1() {
+        final var numbers = getInputText();
         final var bitcounts = getBitCounts(numbers);
         final var bits = numbers.get(0).length();
 
@@ -29,31 +28,8 @@ public class Question03 extends Question {
         return gamma * epsilon;
     }
 
-    private HashMap<Integer, Integer> getBitCounts(List<String> numbers) {
-        final var bits = numbers.get(0).length();
-        final var bitcounts = new HashMap<Integer, Integer>();
-        for (var i = 0; i < bits; i++) {
-            bitcounts.put(i, getBitCount(numbers, i));
-        }
-        return bitcounts;
-    }
-
-    private int getBitCount(Collection<String> numbers, int idx) {
-        int bitcount = 0;
-        for (var number : numbers) {
-            if (number.charAt(idx) == '1') {
-                bitcount++;
-            }
-        }
-        return bitcount;
-    }
-
-    public long Part1Expected() {
-        return 3969000;
-    }
-
-    public long Part2() throws IOException {
-        final var numbers = GetInputText();
+    public long part2() {
+        final var numbers = getInputText();
         final var bits = numbers.get(0).length();
 
         final var o2GeneratorCandidates = new HashSet<>(numbers);
@@ -93,7 +69,23 @@ public class Question03 extends Question {
         return o2GeneratorRating * co2ScrubberRating;
     }
 
-    public long Part2Expected() {
-        return 4267809;
+    private HashMap<Integer, Integer> getBitCounts(List<String> numbers) {
+        final var bits = numbers.get(0).length();
+        final var bitcounts = new HashMap<Integer, Integer>();
+        for (var i = 0; i < bits; i++) {
+            bitcounts.put(i, getBitCount(numbers, i));
+        }
+        return bitcounts;
     }
+
+    private int getBitCount(Collection<String> numbers, int idx) {
+        int bitcount = 0;
+        for (var number : numbers) {
+            if (number.charAt(idx) == '1') {
+                bitcount++;
+            }
+        }
+        return bitcount;
+    }
+
 }

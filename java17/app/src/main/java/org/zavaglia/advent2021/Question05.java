@@ -1,6 +1,5 @@
 package org.zavaglia.advent2021;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,21 +8,11 @@ import java.util.stream.Collectors;
 public class Question05 extends Question {
 
     public Question05() {
-        super(5);
+        super();
     }
 
-    public Question05(List<String> input) {
-        super(5, input);
-    }
-
-    List<Line> GetLines() throws IOException {
-        return GetInputText().stream()
-                .map(Line::fromString)
-                .collect(Collectors.toList());
-    }
-
-    public long Part1() throws IOException {
-        final var lines = GetLines();
+    public long part1() {
+        final var lines = getLines();
         int xMax = 0, yMax = 0;
         for (var line : lines) {
             if (line.start.x > xMax) xMax = line.start.x;
@@ -33,7 +22,7 @@ public class Question05 extends Question {
         }
         final var occupiedPoints = new int[xMax + 1][yMax + 1];
 
-        for (var line : GetLines()) {
+        for (var line : getLines()) {
             if (line.isHorizontal()) {
                 for (var x = Math.min(line.start.x, line.end.x); x <= Math.max(line.start.x, line.end.x); x++) {
                     occupiedPoints[x][line.start.y]++;
@@ -58,12 +47,8 @@ public class Question05 extends Question {
         return count;
     }
 
-    public long Part1Expected() {
-        return 5373;
-    }
-
-    public long Part2() throws IOException {
-        final var lines = GetLines();
+    public long part2() {
+        final var lines = getLines();
         int xMax = 0, yMax = 0;
         for (var line : lines) {
             if (line.start.x > xMax) xMax = line.start.x;
@@ -73,7 +58,7 @@ public class Question05 extends Question {
         }
         final var occupiedPoints = new int[xMax + 1][yMax + 1];
 
-        for (var line : GetLines()) {
+        for (var line : getLines()) {
             if (line.isHorizontal()) {
                 for (var x = Math.min(line.start.x, line.end.x); x <= Math.max(line.start.x, line.end.x); x++) {
                     occupiedPoints[x][line.start.y]++;
@@ -109,8 +94,10 @@ public class Question05 extends Question {
         return count;
     }
 
-    public long Part2Expected() {
-        return 21514;
+    List<Line> getLines() {
+        return getInputText().stream()
+                .map(Line::fromString)
+                .collect(Collectors.toList());
     }
 
     record Point(int x, int y) {
