@@ -27,7 +27,7 @@ public class BatchTest extends TestCase {
                 Paths.get(String.format("data/%s.txt", dataset_)),
                 Charset.defaultCharset());
 
-        var cons = questionClass.getConstructor(null);
+        var cons = questionClass.getConstructor();
         q_ = (Question) cons.newInstance();
         q_.setInputText(lines);
         answerPart1_ = answerPart1;

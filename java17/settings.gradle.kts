@@ -8,4 +8,3 @@
  */
 
 rootProject.name = "advent-of-code-2021-java17"
-include("app")
