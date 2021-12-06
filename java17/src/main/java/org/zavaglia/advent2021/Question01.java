@@ -5,16 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Question01 extends Question {
-    public Question01() {
-        super();
-    }
-
-    // return count where a successor element is larger than predecessor, i.e. intList[i] < intList[i+1]
-    int countLargerSuccessors(List<Integer> intList) {
-        return IntStream.range(0, intList.size() - 1)
-                .map(i -> intList.get(i) < intList.get(i + 1) ? 1 : 0)
-                .reduce(0, Integer::sum);
-    }
 
     public long part1() {
         var ints = getIntegers();
@@ -30,4 +20,10 @@ public class Question01 extends Question {
         return countLargerSuccessors(aggregates);
     }
 
+    // return count where a successor element is larger than predecessor, i.e. intList[i] < intList[i+1]
+    int countLargerSuccessors(List<Integer> intList) {
+        return IntStream.range(0, intList.size() - 1)
+                .map(i -> intList.get(i) < intList.get(i + 1) ? 1 : 0)
+                .reduce(0, Integer::sum);
+    }
 }

@@ -7,10 +7,6 @@ import java.util.stream.Collectors;
 
 public class Question05 extends Question {
 
-    public Question05() {
-        super();
-    }
-
     public long part1() {
         final var lines = getLines();
         int xMax = 0, yMax = 0;

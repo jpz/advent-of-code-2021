@@ -4,10 +4,6 @@ import java.util.*;
 
 public class Question03 extends Question {
 
-    public Question03() {
-        super();
-    }
-
     public long part1() {
         final var numbers = getInputText();
         final var bitcounts = getBitCounts(numbers);

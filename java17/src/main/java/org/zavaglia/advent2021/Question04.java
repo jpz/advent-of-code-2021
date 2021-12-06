@@ -9,10 +9,6 @@ import java.util.stream.Collectors;
 
 public class Question04 extends Question {
 
-    public Question04() {
-        super();
-    }
-
     public long part1() {
         final var boards = getBoards();
 

@@ -7,10 +7,6 @@ import java.util.stream.Collectors;
 
 public class Question06 extends Question {
 
-    public Question06() {
-        super();
-    }
-
     public long part1() {
         var fish = new long[9];
         for (var number : getNumbers()) {
