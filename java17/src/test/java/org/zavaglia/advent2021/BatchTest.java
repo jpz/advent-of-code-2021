@@ -35,7 +35,7 @@ public class BatchTest extends TestCase {
     }
 
     @Parameterized.Parameters(name = "{1}")
-    public static Collection<Object> data() throws IOException {
+    public static Collection<Object> data() {
         return Arrays.asList(
                 new Object[]{Question01.class, "q01sample", 7L, 5L},
                 new Object[]{Question01.class, "q01", 1393L, 1359L},
@@ -43,18 +43,20 @@ public class BatchTest extends TestCase {
                 new Object[]{Question03.class, "q03", 3969000L, 4267809L},
                 new Object[]{Question04.class, "q04", 58374L, 11377L},
                 new Object[]{Question05.class, "q05sample", 5L, 12L},
-                new Object[]{Question05.class, "q05", 5373L, 21514L}
+                new Object[]{Question05.class, "q05", 5373L, 21514L},
+                new Object[]{Question06.class, "q06sample", 5934L, 26984457539L},
+                new Object[]{Question06.class, "q06", 362346L, 1639643057051L}
         );
     }
 
     @Test
-    public void testPart1() throws IOException {
-        assertEquals(q_.part1(), answerPart1_);
+    public void testPart1() {
+        assertEquals(answerPart1_, q_.part1());
     }
 
     @Test
-    public void testPart2() throws IOException {
-        assertEquals(q_.part2(), answerPart2_);
+    public void testPart2() {
+        assertEquals(answerPart2_, q_.part2());
     }
 
 
