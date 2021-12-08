@@ -49,6 +49,8 @@ public class Question08 extends Question {
             final var segmentToChar = new HashMap<Character, Character>();
 
 
+            // this data structure stores a list of sets of characters, the index
+            // of the map is the number of characters in each set.
             var strByLen = new HashMap<Integer, List<Set<Character>>>();
 
             for (var s : randomStrings) {
@@ -58,7 +60,6 @@ public class Question08 extends Question {
                 strByLen.put(set.size(), list);
             }
 
-            // calculate a by subtracting the 2-segment from 3-segment string
             char a = calculateA(strByLen);
             charToSegment.put(a, 'a');
             segmentToChar.put('a', a);
@@ -108,6 +109,8 @@ public class Question08 extends Question {
     }
 
     private Character calculateF(HashSet<Character> chars, char a, char g, char e, char b, char d, char c) {
+        // calculate f by subtracting the all the other known characters (6 of them) from the 7
+        // possible characters.
         var tmp = new HashSet<>(chars);
         tmp.remove(a);
         tmp.remove(b);
@@ -121,6 +124,9 @@ public class Question08 extends Question {
     }
 
     private char calculateC(HashMap<Integer, List<Set<Character>>> strByLen, char a, char g, char e, char d) {
+        // calculate d by subtracting the a, d, e, g segments from each of the 5
+        // segment words.  Where that reduces to one character, we can infer that we hae
+        // the c segment, i.e. the matched number was 2.
         var c = '?';
         for (var s : strByLen.get(5)) {
             var tmp = new HashSet<>(s);
@@ -138,6 +144,9 @@ public class Question08 extends Question {
     }
 
     private char calculateD(HashMap<Integer, List<Set<Character>>> strByLen, char a, char g) {
+        // calculate d by subtracting the 2-segment and the a, g segments from each of the 5
+        // segment words.  Where that reduces to one character, we can infer that we hae
+        // the d segment, i.e. the matched number was 3.
         var d = '?';
         for (var s : strByLen.get(5)) {
             var tmp = new HashSet<>(s);
@@ -154,6 +163,9 @@ public class Question08 extends Question {
     }
 
     private char calculateB(HashMap<Integer, List<Set<Character>>> strByLen, char a, char g, char e) {
+        // calculate b by subtracting the 2-segment and the a, e, g segments from each of the 6
+        // segment words.  Where that reduces to one character, we can infer that we hae
+        // the b segment, i.e. the matched number was 0.
         var b = '?';
         for (var s : strByLen.get(6)) {
             var tmp = new HashSet<>(s);
@@ -171,6 +183,8 @@ public class Question08 extends Question {
     }
 
     private char calculateE(HashSet<Character> chars, HashMap<Integer, List<Set<Character>>> strByLen, char a, char g) {
+        // calculate e by subtracting the 4-segment and the a and g segments from all seven
+        // segments.  The remaining single segment is the e segment.
         var setE = new HashSet<>(chars);
         setE.removeAll(strByLen.get(4).get(0));
         setE.remove(a);
@@ -181,6 +195,9 @@ public class Question08 extends Question {
     }
 
     private char calculateG(HashMap<Integer, List<Set<Character>>> strByLen, char a) {
+        // calculate g by subtracting the 4-segment and the a segment from each of the 6
+        // segment words.  Where that reduces to one character, we can infer that we hae
+        // the g segment, i.e. the matched number was 3.
         var g = '?';
         for (var s : strByLen.get(6)) {
             var tmp = new HashSet<>(s);
@@ -196,6 +213,7 @@ public class Question08 extends Question {
     }
 
     private char calculateA(HashMap<Integer, List<Set<Character>>> strByLen) {
+        // calculate a by subtracting the 2-segment from 3-segment string
         var setA = strByLen.get(3).get(0);
         setA.removeAll(strByLen.get(2).get(0));
 
