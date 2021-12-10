@@ -2,8 +2,6 @@ package org.zavaglia.advent2021;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Stack;
-
 
 public class Question10 extends Question {
 
@@ -11,12 +9,12 @@ public class Question10 extends Question {
 
         var sumError = 0;
         for (var line : getInputText()) {
-            var s = new Stack<Character>();
+            var s = new ArrayList<Character>();
             for (var ch : line.toCharArray()) {
                 if ("([{<".indexOf(ch) != -1) {
-                    s.push(ch);
+                    s.add(ch);
                 } else {
-                    var ch0 = (char) s.pop();
+                    var ch0 = (char) s.remove(s.size() - 1);
                     if (ch0 == '(' && ch == ')' ||
                             ch0 == '[' && ch == ']' ||
                             ch0 == '{' && ch == '}' ||
