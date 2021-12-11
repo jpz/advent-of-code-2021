@@ -23,6 +23,15 @@ public abstract class Question {
         return getInputText().stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
+    int[][] getRowColumnArray() {
+        var tmp = getInputText().stream().map(
+                line -> line.chars().map(ch -> ch - '0').toArray()
+        ).toList();
+        var retval = tmp.toArray(new int[tmp.size()][]);
+        return retval;
+    }
+
+
     // calculate the result of the part 1
     public abstract long part1();
 

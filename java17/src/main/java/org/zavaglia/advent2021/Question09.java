@@ -73,13 +73,8 @@ public class Question09 extends Question {
         return retval;
     }
 
-
     private int[][] getHeightMap() {
-        var tmpHeightMap = getInputText().stream().map(
-                line -> line.chars().map(ch -> ch - '0').toArray()
-        ).toList();
-        var heightMap = tmpHeightMap.toArray(new int[tmpHeightMap.size()][]);
-        return heightMap;
+        return getRowColumnArray();
     }
 
     List<Point> computeLowPoints(int[][] heightMap) {
