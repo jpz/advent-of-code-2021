@@ -10,6 +10,7 @@ repositories {
 dependencies {
     // Use JUnit test framework.
     testImplementation("junit:junit:4.13.2")
+    implementation("org.javatuples:javatuples:1.1")
 }
 
 java {
