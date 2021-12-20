@@ -122,7 +122,7 @@ public class Question19 extends Question {
             var beaconArr = beacons.toArray(new ColumnVector[beacons.size()]);
             value = new ArrayList<>();
             for (var i = 0; i < beaconArr.length; i++) {
-                for (var j = i+1; j < beaconArr.length; j++) {
+                for (var j = i + 1; j < beaconArr.length; j++) {
                     value.add(beaconArr[j].subtract(beaconArr[i]).magnitude());
                 }
             }
