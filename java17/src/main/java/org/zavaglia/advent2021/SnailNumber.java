@@ -5,10 +5,12 @@ public class SnailNumber {
     SnailNumber left;
     SnailNumber right;
     int number;
+
     SnailNumber(String s, int pos) {
         parent = null;
         parseNumber(s, pos);
     }
+
     SnailNumber(SnailNumber parent) {
         this.parent = parent;
     }
