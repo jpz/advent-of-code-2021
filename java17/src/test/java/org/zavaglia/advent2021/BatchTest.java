@@ -81,7 +81,9 @@ public class BatchTest extends TestCase {
                 new Object[]{Question22.class, "q22sample", 39L, 39L},
                 new Object[]{Question22.class, "q22sample2", 590784L, 39769202357779L},
                 new Object[]{Question22.class, "q22sample3", 474140L, 2758514936282235L},
-                new Object[]{Question22.class, "q22", 551693L, 1165737675582132L}
+                new Object[]{Question22.class, "q22", 551693L, 1165737675582132L},
+                new Object[]{Question23.class, "q23sample", 12521L, 44169L},
+                new Object[]{Question23.class, "q23", 13556L, 54200L}
         );
     }
 
